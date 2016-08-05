@@ -2,23 +2,11 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
 } from 'react-native';
+import Meteor from 'react-native-meteor';
 
-class App extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native + Meteor!
-        </Text>
-        <Text style={styles.instructions}>
-          We will use this soon
-        </Text>
-      </View>
-    );
-  }
-}
+const SERVER_URL = 'ws://localhost:3000/websocket';
 
 const styles = StyleSheet.create({
   container: {
@@ -38,5 +26,23 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+class App extends Component {
+  componentWillMount() {
+    Meteor.connect(SERVER_URL);
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Welcome to React Native + Meteor!
+        </Text>
+        <Text style={styles.instructions}>
+          We will use this soon
+        </Text>
+      </View>
+    );
+  }
+}
 
 export default App;
