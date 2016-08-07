@@ -3,8 +3,9 @@ import {
   StyleSheet,
   Text,
   View,
+  TextInput,
 } from 'react-native';
-import Meteor, { createContainer } from 'react-native-meteor';
+import Meteor, { createContainer, MeteorListView } from 'react-native-meteor';
 
 const SERVER_URL = 'ws://localhost:3000/websocket';
 
@@ -28,8 +29,21 @@ const styles = StyleSheet.create({
 });
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: 'Useless Placeholder',
+    };
+  }
+
   componentWillMount() {
     Meteor.connect(SERVER_URL);
+  }
+
+  renderRow(documents) {
+    return (
+      <Text>{documents.title}</Text>
+    );
   }
 
   render() {
@@ -38,21 +52,28 @@ class App extends Component {
         <Text style={styles.welcome}>
           Welcome to React Native + Meteor!
         </Text>
-        <Text style={styles.instructions}>
-          Item Count: {this.props.count}
-        </Text>
+        <TextInput
+          style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+          onChangeText={(text) => this.setState({ text })}
+          value={this.state.text}
+        />
+
+        <MeteorListView
+          collection="Documents"
+          renderRow={this.renderRow}
+        />
       </View>
     );
   }
 }
 
 App.propTypes = {
-  count: React.PropTypes.number,
+  count: React.PropTypes.array,
 };
 
 export default createContainer(() => {
   Meteor.subscribe('documents');
   return {
-    count: Meteor.collection('Documents').find().length,
+    count: Meteor.collection('Documents').find(),
   };
 }, App);
