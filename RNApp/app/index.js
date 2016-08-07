@@ -40,9 +40,9 @@ class App extends Component {
     Meteor.connect(SERVER_URL);
   }
 
-  renderRow(documents) {
+  renderRow(document) {
     return (
-      <Text>{documents.title}</Text>
+      <Text>{document.title}</Text>
     );
   }
 
@@ -68,12 +68,12 @@ class App extends Component {
 }
 
 App.propTypes = {
-  count: React.PropTypes.array,
+  documents: React.PropTypes.array,
 };
 
 export default createContainer(() => {
   Meteor.subscribe('documents');
   return {
-    count: Meteor.collection('Documents').find(),
+    documents: Meteor.collection('Documents').find(),
   };
 }, App);
