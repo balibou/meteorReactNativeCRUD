@@ -4,7 +4,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import Meteor from 'react-native-meteor';
+import Meteor, { createContainer } from 'react-native-meteor';
 
 const SERVER_URL = 'ws://localhost:3000/websocket';
 
@@ -31,6 +31,7 @@ class App extends Component {
   componentWillMount() {
     Meteor.connect(SERVER_URL);
   }
+
   render() {
     return (
       <View style={styles.container}>
@@ -38,11 +39,20 @@ class App extends Component {
           Welcome to React Native + Meteor!
         </Text>
         <Text style={styles.instructions}>
-          We will use this soon
+          Item Count: {this.props.count}
         </Text>
       </View>
     );
   }
 }
 
-export default App;
+App.propTypes = {
+  count: React.PropTypes.number,
+};
+
+export default createContainer(() => {
+  Meteor.subscribe('documents');
+  return {
+    count: Meteor.collection('Documents').find().length,
+  };
+}, App);
