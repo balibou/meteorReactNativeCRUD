@@ -32,7 +32,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: 'Useless Placeholder',
+      text: 'Type a document title and press enter',
     };
   }
 
@@ -46,6 +46,15 @@ class App extends Component {
     );
   }
 
+  insertNewDocument(item) {
+    Meteor.call('documents.insert', {
+      title: item.nativeEvent.text,
+    }, (error, response) => {
+      if (error) console.warn(error.reason);
+      if (response) console.log(response);
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -56,6 +65,7 @@ class App extends Component {
           style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
           onChangeText={(text) => this.setState({ text })}
           value={this.state.text}
+          onSubmitEditing={this.insertNewDocument}
         />
 
         <MeteorListView
