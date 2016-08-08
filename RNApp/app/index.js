@@ -50,9 +50,24 @@ class App extends Component {
         if (response) console.log(response);
       });
     }
+    // function updateDocument() {
+    //   console.log(document);
+    //   Meteor.call('documents.update', {
+    //     _id: document._id,
+    //     update: { title: document.title },
+    //   }, (error, response) => {
+    //     if (error) console.warn(error.reason);
+    //     if (response) console.log(response);
+    //   });
+    // }
     return (
       <View>
         <Text>{document.title}</Text>
+        {/* <TextInput
+          style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+          // onSubmitEditing={updateDocument}
+          value={document.title}
+        /> */}
         <TouchableOpacity style={styles.button} onPress={removeDocument}>
           <Text style={styles.buttonText}>
             Remove
@@ -69,16 +84,6 @@ class App extends Component {
       if (error) console.warn(error.reason);
       if (response) console.log(response);
     });
-  }
-
-  removeDocument() {
-    // Meteor.call('documents.remove', {
-    //   _id: item._id,
-    // }, (error, response) => {
-    //   if (error) console.warn(error.reason);
-    //   if (response) console.log(response);
-    // });
-    console.log('test');
   }
 
   render() {
