@@ -4,6 +4,7 @@ import {
   Text,
   View,
   TextInput,
+  TouchableOpacity,
 } from 'react-native';
 import Meteor, { createContainer, MeteorListView } from 'react-native-meteor';
 
@@ -41,8 +42,23 @@ class App extends Component {
   }
 
   renderRow(document) {
+    function removeDocument() {
+      Meteor.call('documents.remove', {
+        _id: document._id,
+      }, (error, response) => {
+        if (error) console.warn(error.reason);
+        if (response) console.log(response);
+      });
+    }
     return (
-      <Text>{document.title}</Text>
+      <View>
+        <Text>{document.title}</Text>
+        <TouchableOpacity style={styles.button} onPress={removeDocument}>
+          <Text style={styles.buttonText}>
+            Remove
+          </Text>
+        </TouchableOpacity>
+      </View>
     );
   }
 
@@ -53,6 +69,16 @@ class App extends Component {
       if (error) console.warn(error.reason);
       if (response) console.log(response);
     });
+  }
+
+  removeDocument() {
+    // Meteor.call('documents.remove', {
+    //   _id: item._id,
+    // }, (error, response) => {
+    //   if (error) console.warn(error.reason);
+    //   if (response) console.log(response);
+    // });
+    console.log('test');
   }
 
   render() {
