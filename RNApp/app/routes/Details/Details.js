@@ -23,7 +23,7 @@ const removeDocument = (document) =>
 
 const renderRow = (document) =>
   <View>
-    <EditableInput document={document} />
+    <EditableInput key={document._id} document={document} />
     {/* <Text>{document.title}</Text> */}
     <TouchableOpacity style={styles.button} onPress={() => removeDocument(document)}>
        <Text style={styles.buttonText}>
