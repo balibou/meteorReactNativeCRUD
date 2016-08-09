@@ -3,6 +3,7 @@ import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import Meteor, { MeteorListView } from 'react-native-meteor';
 import Loading from '../../components/Loading';
 import styles from './styles';
+import EditableInput from '../../components/EditableInput';
 
 const insertNewDocument = (item) =>
   Meteor.call('documents.insert', {
@@ -22,7 +23,8 @@ const removeDocument = (document) =>
 
 const renderRow = (document) =>
   <View>
-    <Text>{document.title}</Text>
+    <EditableInput document={document} />
+    {/* <Text>{document.title}</Text> */}
     <TouchableOpacity style={styles.button} onPress={() => removeDocument(document)}>
        <Text style={styles.buttonText}>
          Remove
