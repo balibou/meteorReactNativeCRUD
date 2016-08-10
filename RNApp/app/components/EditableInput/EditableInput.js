@@ -1,6 +1,7 @@
-import React from 'react';
-import { TextInput, Text } from 'react-native';
+import React, { PropTypes } from 'react';
+import { TextInput } from 'react-native';
 import Meteor from 'react-native-meteor';
+import styles from './styles';
 
 const updateDocument = (id, newTitle) =>
   Meteor.call('documents.update', {
@@ -24,8 +25,7 @@ export default class EditableInput extends React.Component {
     const { _id } = this.props.document;
     return (
       <TextInput
-        style={{ width: 250, height: 40, borderColor: 'gray', borderWidth: 1, paddingVertical: 10,
-        paddingHorizontal: 20, margin: 5 }}
+        style={styles.textInput}
         onSubmitEditing={() => updateDocument(_id, title)}
         onChangeText={(title) => this.setState({ title })}
         value={title}
@@ -33,3 +33,7 @@ export default class EditableInput extends React.Component {
     );
   }
 }
+
+EditableInput.propTypes = {
+  document: PropTypes.object,
+};

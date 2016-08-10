@@ -23,13 +23,16 @@ const removeDocument = (document) =>
     });
 
 const renderRow = (document) =>
-  <View style={{ flex: 1, flexDirection: 'row' }}>
-    <EditableInput key={document._id} document={document}/>
-     <Button
-       text="Remove"
-       onPress={() => removeDocument(document)}
-       color='danger'
-     />
+  <View style={styles.renderRow}>
+    <EditableInput
+      key={document._id}
+      document={document}
+    />
+    <Button
+      text="Remove"
+      onPress={() => removeDocument(document)}
+      color='danger'
+    />
   </View>;
 
 export default class Documents extends React.Component {
@@ -48,8 +51,7 @@ export default class Documents extends React.Component {
     return (
       <View style={styles.container}>
         <TextInput
-          style={{ height: 40, borderColor: 'gray', borderWidth: 1, margin: 5, paddingVertical: 10,
-          paddingHorizontal: 20 }}
+          style={styles.textInput}
           onChangeText={(text) => this.setState({ text })}
           value={this.state.text}
           onSubmitEditing={insertNewDocument}

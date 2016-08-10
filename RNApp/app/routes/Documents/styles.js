@@ -29,4 +29,16 @@ export default styles = StyleSheet.create({
     textAlign: 'center',
     alignItems: 'center',
   },
+  renderRow: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  textInput: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    margin: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+  },
 });
