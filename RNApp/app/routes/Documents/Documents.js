@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { View, TextInput } from 'react-native';
 import Meteor, { MeteorListView } from 'react-native-meteor';
 import Loading from '../../components/Loading';
 import styles from './styles';
@@ -23,7 +23,7 @@ const removeDocument = (document) =>
     });
 
 const renderRow = (document) =>
-  <View style={{flex: 1, flexDirection: 'row'}}>
+  <View style={{ flex: 1, flexDirection: 'row' }}>
     <EditableInput key={document._id} document={document}/>
      <Button
        text="Remove"
@@ -32,7 +32,7 @@ const renderRow = (document) =>
      />
   </View>;
 
-export default class Details extends React.Component {
+export default class Documents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,8 +41,8 @@ export default class Details extends React.Component {
   }
 
   render() {
-    const { detailsReady } = this.props;
-    if (!detailsReady) {
+    const { documentsReady } = this.props;
+    if (!documentsReady) {
       return <Loading />;
     }
     return (
@@ -64,6 +64,6 @@ export default class Details extends React.Component {
   }
 }
 
-Details.propTypes = {
-  detailsReady: PropTypes.bool,
+Documents.propTypes = {
+  documentsReady: PropTypes.bool,
 };

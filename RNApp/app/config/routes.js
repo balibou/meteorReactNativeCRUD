@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from '../routes/Home';
-import Details from '../routes/Details';
+import Documents from '../routes/Documents';
 import Profile from '../routes/Profile';
 import SignIn from '../routes/SignIn';
 
@@ -19,11 +19,11 @@ export const routes = {
   getDetailsRoute() {
     return {
       renderScene(navigator) {
-        return <Details navigator={navigator} />;
+        return <Documents navigator={navigator} />;
       },
 
       getTitle() {
-        return 'Details';
+        return 'Documents';
       },
     };
   },

@@ -10,7 +10,7 @@ const Home = (props) => {
         Home
       </Text>
       <Button
-        text="Details"
+        text="Documents"
         onPress={props.onDetailsPress}
       />
     </View>
