@@ -8,6 +8,12 @@ export default styles = StyleSheet.create({
     backgroundColor: colors.buttonBackground,
     margin: 5,
   },
+  buttonDanger: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: '#D9534F',
+    margin: 5,
+  },
   buttonText: {
     color: colors.buttonText,
     fontSize: 16,
