@@ -23,8 +23,8 @@ const removeDocument = (document) =>
     });
 
 const renderRow = (document) =>
-  <View>
-    <EditableInput key={document._id} document={document} />
+  <View style={{flex: 1, flexDirection: 'row'}}>
+    <EditableInput key={document._id} document={document}/>
      <Button
        text="Remove"
        onPress={() => removeDocument(document)}
@@ -48,10 +48,12 @@ export default class Details extends React.Component {
     return (
       <View style={styles.container}>
         <TextInput
-          style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+          style={{ height: 40, borderColor: 'gray', borderWidth: 1, margin: 5, paddingVertical: 10,
+          paddingHorizontal: 20 }}
           onChangeText={(text) => this.setState({ text })}
           value={this.state.text}
           onSubmitEditing={insertNewDocument}
+          placeholder="Type a document title and press enter..."
         />
         <MeteorListView
           collection="Documents"

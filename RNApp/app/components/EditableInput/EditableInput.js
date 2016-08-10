@@ -24,7 +24,8 @@ export default class EditableInput extends React.Component {
     const { _id } = this.props.document;
     return (
       <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+        style={{ width: 250, height: 40, borderColor: 'gray', borderWidth: 1, paddingVertical: 10,
+        paddingHorizontal: 20, margin: 5 }}
         onSubmitEditing={() => updateDocument(_id, title)}
         onChangeText={(title) => this.setState({ title })}
         value={title}

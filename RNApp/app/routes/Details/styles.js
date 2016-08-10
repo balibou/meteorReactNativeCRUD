@@ -9,6 +9,7 @@ export default styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
+    padding: 5,
   },
   list: {
     flexDirection: 'row',
