@@ -2,7 +2,11 @@
 
 A starting point for Meteor apps + React Native CRUD.
 
-Done with The Meteor Chef - Base
+Done with 2 awesome repos:
+
+- [The Meteor Chef - Base](https://github.com/themeteorchef/base)
+- [Spencer Carli's React Native Meteor Boilerplate](https://github.com/spencercarli/react-native-meteor-boilerplate)
+
 <table>
   <tbody>
     <tr>
